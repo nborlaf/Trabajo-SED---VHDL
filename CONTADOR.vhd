@@ -43,12 +43,11 @@ begin
 
     process(CLK, RESET)
     begin  
-    --Cuando la señal de RESET se active, la señal intermedia cuenta_aux y la salida 
-    --cuenta pasarán a cero
+    --Cuando la señal de RESET se active, la señal intermedia cuenta_aux y la salida cuenta pasarán a cero
         if RESET='0' then
             cuenta_aux<="00000";          
         elsif rising_edge(CLK)then 
-        --Si el bit de error o de venta está activo, la cuenta del dinero se reiniciará a cero      
+        --Si el bit de error o de venta está activo, la cuenta del dinero pasará a cero      
             if ERROR='1' then
                 cuenta_aux<="00000";
             elsif VENTA='1' then

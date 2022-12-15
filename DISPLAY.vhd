@@ -36,7 +36,7 @@ end DISPLAY;
 architecture Behavioral of DISPLAY is
     signal numero : integer;
     signal cifra: natural range 0 to 7 :=0;
-     signal show: natural range 0 to 18 :=0;
+     signal show: natural range 0 to 19 :=0;
      signal clk_counter: natural range 0 to 20000 :=0;
 begin
    process(clk)
@@ -62,7 +62,7 @@ begin
    process(cifra)
      begin
      numero <= to_integer(unsigned(cuenta));
-      if numero<=10 then --entre 0€ a 1.2€
+      if numero<=12 then --entre 0€ a 1.2€
          case cifra is
            when 0=>digsel <="11111110";
            when 1=>digsel <="11111101";
@@ -199,7 +199,7 @@ begin
          if numero=11 then --1.1€
         case cifra is
            when 0=>show<=0;
-           when 1=>show<=1;
+           when 1=>show<=1; --nº1
            when 2=>show<=18;--nº uno con punto
            when others=>show<=19;--no muestra nada en display
          end case;
@@ -208,7 +208,7 @@ begin
          if numero=12 then --1.2€
         case cifra is
            when 0=>show<=0;
-           when 1=>show<=2;
+           when 1=>show<=2; --nº2
            when 2=>show<=18;--nº uno con punto
            when others=>show<=19;--no muestra nada en display
          end case;
@@ -220,7 +220,7 @@ begin
            when 5=>show<=16;--I
            when 6=>show<=14;--A
            when 7=>show<=11;--F
-           when others=>show<=18;--no muestra nada en display
+           when others=>show<=19;--no muestra nada en display
          end case;
         end if;
         
@@ -231,7 +231,7 @@ begin
            when 5=>show<=12;--L
            when 6=>show<=13;--O
            when 7=>show<=15;--S
-           when others=>show<=18;--no muestra nada en display
+           when others=>show<=19;--no muestra nada en display
          end case;
         end if;
         
